@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vidisha Deshpande</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+
+  <!-- Umami analytics — replace data-website-id with your own from umami.is -->
+  <!-- <script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR-ID-HERE"></script> -->
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #f9f9f8;
+      --surface:  #ffffff;
+      --border:   #e4e4e1;
+      --text:     #1a1a18;
+      --muted:    #6b6b67;
+      --accent:   #2563eb;
+      --tag-bg:   #f0f0ee;
+      --tag-text: #44443f;
+      --radius:   10px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── layout ── */
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 72px 24px 96px;
+    }
+
+    /* ── hero ── */
+    .hero { margin-bottom: 56px; }
+
+    .hero h1 {
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+
+    .hero .tagline {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 5px 11px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .links a:hover {
+      color: var(--text);
+      border-color: #c0c0bc;
+      text-decoration: none;
+    }
+
+    .links a svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ── section label ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    /* ── project cards ── */
+    .projects { margin-bottom: 56px; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 16px;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .card-links {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .card-links a {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .card-links a:hover { text-decoration: underline; }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    .card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .card ul li {
+      font-size: 14px;
+      line-height: 1.55;
+      padding-left: 14px;
+      position: relative;
+      color: var(--text);
+    }
+
+    .card ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--border);
+      font-size: 13px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border-radius: 4px;
+      padding: 3px 8px;
+    }
+
+    /* ── experience ── */
+    .experience { margin-bottom: 56px; }
+
+    .exp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+    }
+
+    .exp-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .exp-title {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .exp-dates {
+      font-size: 13px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .exp-company {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .exp-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .exp-card ul li {
+      font-size: 14px;
+      line-height: 1.55;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .exp-card ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--border);
+      font-size: 13px;
+    }
+
+    /* ── publications ── */
+    .publications { margin-bottom: 56px; }
+
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .pub-item {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .pub-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    .pub-item a {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .pub-item a:hover { color: var(--accent); text-decoration: none; }
+
+    .pub-venue {
+      color: var(--muted);
+      font-size: 13px;
+      margin-left: 4px;
+    }
+
+    /* ── skills ── */
+    .skills { margin-bottom: 0; }
+
+    .skill-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* ── footer ── */
+    .footer {
+      margin-top: 72px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ── responsive ── */
+    @media (max-width: 520px) {
+      .card-header { flex-direction: column; gap: 8px; }
+      .exp-header { flex-direction: column; gap: 2px; }
+      .page { padding: 48px 20px 72px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Hero -->
+  <header class="hero">
+    <h1>Vidisha Deshpande</h1>
+    <p class="tagline">MS Data Science @ Stony Brook &nbsp;·&nbsp; Stony Brook, NY &nbsp;·&nbsp; Open to AI/ML internships and full-time roles (2027)</p>
+    <nav class="links" aria-label="Contact links">
+      <a href="https://github.com/vidi-deshp12" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/vidishadeshpande" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="mailto:vidisha.deshpande@stonybrook.edu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+      <a href="/resume.pdf" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Resume
+      </a>
+    </nav>
+  </header>
+
+  <!-- Projects -->
+  <section class="projects" aria-labelledby="projects-label">
+    <p class="section-label" id="projects-label">Projects</p>
+
+    <!-- FactGraph -->
+    <article class="card">
+      <div class="card-header">
+        <span class="card-title">FactGraph</span>
+        <div class="card-links">
+          <a href="https://github.com/vidi-deshp12/FactGraph-Verifier" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+      <p class="card-desc">
+        LLMs annotating factual claims have no evidence trail — when they're wrong, nothing flags it.
+        Built a knowledge-graph-grounded verification pipeline to catch these errors on the FEVER benchmark.
+      </p>
+      <ul>
+        <li>Rescued 62% of baseline LLM annotation errors (133 of 213 wrong labels corrected) by cross-checking each claim against Wikidata-derived graph evidence rather than parametric LLM knowledge.</li>
+        <li>Boosted NEI recall 4.9× (0.17 → 0.83) by grounding ambiguous claims in structured evidence instead of defaulting to a confident guess — demonstrating KG retrieval as a targeted correction layer, not a replacement classifier.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">LLaMA 3.1</span>
+        <span class="tag">spaCy</span>
+        <span class="tag">Neo4j</span>
+        <span class="tag">DeBERTa</span>
+        <span class="tag">Qwen2.5</span>
+        <span class="tag">Wikidata</span>
+        <span class="tag">Python</span>
+      </div>
+    </article>
+
+    <!-- Image Captioning -->
+    <article class="card">
+      <div class="card-header">
+        <span class="card-title">Real-Time Image Captioning for the Visually Impaired</span>
+        <div class="card-links">
+          <a href="https://github.com/vidi-deshp12/Real-Time-Image-Captioning-to-Assist-the-Visually-Impaired" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://link.springer.com/chapter/10.1007/978-981-97-9282-5_46" target="_blank" rel="noopener">Paper ↗</a>
+        </div>
+      </div>
+      <p class="card-desc">
+        Visually impaired users need immediate, accurate descriptions of their surroundings.
+        Built a real-time assistive captioning system, deployed end-to-end on mobile, published at SmartCom 2025.
+      </p>
+      <ul>
+        <li>Cut end-to-end inference latency by 44% (9s → 3.2s) by parallelizing CLIP encoding and EasyOCR text extraction — enabling real-time audio feedback on mobile, validated under low-light, motion blur, and occlusion.</li>
+        <li>Fine-tuned a ClipCap-style model on 20K+ VizWiz accessibility images and deployed it to HuggingFace Hub with a full-stack prototype: React Native frontend + Flask inference backend.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">PyTorch</span>
+        <span class="tag">CLIP</span>
+        <span class="tag">GPT-2</span>
+        <span class="tag">EasyOCR</span>
+        <span class="tag">Flask</span>
+        <span class="tag">React Native</span>
+        <span class="tag">HuggingFace</span>
+      </div>
+    </article>
+  </section>
+
+  <!-- Experience -->
+  <section class="experience" aria-labelledby="exp-label">
+    <p class="section-label" id="exp-label">Experience</p>
+    <div class="exp-card">
+      <div class="exp-header">
+        <span class="exp-title">Data Science Intern — BMC Helix</span>
+        <span class="exp-dates">Jun 2026 – Aug 2026</span>
+      </div>
+      <p class="exp-company">Remote · New York</p>
+      <ul>
+        <li>Built a conversational ITSM agent on BMC Helix Agent Studio that translates unstructured natural-language input into structured tickets, replacing form-based intake with LLM-driven field inference and deterministic priority assignment.</li>
+        <li>Evaluated a production conversational AI agent in an enterprise IT portal through structured adversarial testing, identifying and documenting failure modes in intent routing and multi-turn conversation state handling.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Publications -->
+  <section class="publications" aria-labelledby="pub-label">
+    <p class="section-label" id="pub-label">Publications</p>
+    <div class="pub-list">
+      <div class="pub-item">
+        <div class="pub-dot" aria-hidden="true"></div>
+        <div>
+          <a href="https://link.springer.com/chapter/10.1007/978-981-97-9282-5_46" target="_blank" rel="noopener">Empowering Vision: A Survey on Assistive Technologies for the Visually Impaired</a>
+          <span class="pub-venue">SmartCom 2025 · Springer LNNS · peer-reviewed</span>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-dot" aria-hidden="true"></div>
+        <div>
+          <a href="#" target="_blank" rel="noopener">Few-Shot Learning in Vision-Language Models: A Survey</a>
+          <span class="pub-venue">CVR 2025 · peer-reviewed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="skills" aria-labelledby="skills-label">
+    <p class="section-label" id="skills-label">Skills</p>
+    <div class="skill-strip">
+      <span class="tag">Python</span>
+      <span class="tag">PyTorch</span>
+      <span class="tag">HuggingFace</span>
+      <span class="tag">spaCy</span>
+      <span class="tag">Neo4j</span>
+      <span class="tag">LLM Evaluation</span>
+      <span class="tag">Flask</span>
+      <span class="tag">Docker</span>
+      <span class="tag">SQL</span>
+    </div>
+  </section>
+
+  <footer class="footer">
+    vidisha.deshpande@stonybrook.edu
+  </footer>
+
+</div>
+</body>
+</html>

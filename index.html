@@ -216,7 +216,6 @@
       letter-spacing: -2px;
     }
 
-    /* if the user replaces VD with an actual <img> */
     .photo-frame img {
       width: 100%;
       height: 100%;
@@ -689,7 +688,7 @@
         <h1 class="hero-name">Vidisha Deshpande</h1>
         <p class="hero-tagline">I build <span class="typed-accent" id="typed-text"></span><span class="cursor">|</span></p>
         <p class="hero-bio">
-          MS Data Science student at Stony Brook building AI systems where reliability is the requirement — not the afterthought.
+          MS Data Science student at Stony Brook building AI systems where reliability is the requirement, not the afterthought.
           I'm actively looking for AI engineer roles in retrieval, verification, and multimodal reasoning.
         </p>
         <div class="hero-ctas">
@@ -710,23 +709,9 @@
       </div>
 
       <div class="hero-right">
-        <div class="photo-frame" aria-hidden="true">
-          <!-- Replace inner div with <img src="photo.jpg" alt="Vidisha Deshpande"> when ready -->
-          <div class="photo-initials">VD</div>
-        </div>
-        <div class="stats-row">
-          <div class="stat">
-            <span class="stat-num">3.78</span>
-            <span class="stat-lbl">GPA @<br>Stony Brook</span>
-          </div>
-          <div class="stat">
-            <span class="stat-num">2×</span>
-            <span class="stat-lbl">Peer-<br>Reviewed</span>
-          </div>
-          <div class="stat">
-            <span class="stat-num">3</span>
-            <span class="stat-lbl">AI Systems<br>Built</span>
-          </div>
+        <div class="photo-frame">
+          <!-- Replace with: <img src="photo.jpg" alt="Vidisha Deshpande"> -->
+          <img src="photo.jpg" alt="Vidisha Deshpande">
         </div>
       </div>
     </div>
@@ -742,7 +727,7 @@
         <p>
           I'm a Data Science MS student at Stony Brook building AI systems where
           <strong>reliability is the requirement, not the afterthought.</strong>
-          My work sits at the intersection of retrieval, verification, and multimodal reasoning —
+          My work sits at the intersection of retrieval, verification, and multimodal reasoning;
           grounding LLM outputs in structured evidence, attributing claims to sources,
           and diagnosing systematically where pipelines fail.
         </p>
@@ -755,9 +740,8 @@
           multi-turn state handling.
         </p>
         <p>
-          I'm actively looking for <strong>AI engineer roles</strong> where retrieval quality,
-          output attribution, and failure mode analysis are the core product — at companies
-          like Scale AI, Cohere, Adobe, and Pinterest.
+          I'm actively looking for <strong>AI Engineer roles</strong> focused on building reliable AI systems,
+          particularly around retrieval, attribution, evaluation, and understanding model failure modes.
         </p>
       </div>
 
@@ -792,7 +776,7 @@
           </div>
           <p class="exp-role">Data Science Intern · Remote, New York</p>
           <ul class="exp-bullets">
-            <li>Built a conversational ITSM agent on BMC Helix Agent Studio that translates unstructured natural-language input into structured tickets — replacing form-based intake with LLM-driven field inference and deterministic priority assignment.</li>
+            <li>Built a conversational ITSM agent on BMC Helix Agent Studio that translates unstructured natural-language input into structured tickets, replacing form-based intake with LLM-driven field inference and deterministic priority assignment.</li>
             <li>Evaluated a production conversational AI agent through structured adversarial testing, identifying and documenting failure modes in intent routing and multi-turn conversation state handling.</li>
             <li>Prototyped natural-language ticket search using LLM-generated keyword expansion with lightweight text matching to surface relevant historical resolutions.</li>
           </ul>
@@ -813,11 +797,14 @@
           <div class="exp-card-top">
             <div class="exp-company-row">
               <span class="exp-company">Pune Institute of Computer Technology (PICT)</span>
+              <a href="https://github.com/vidi-deshp12/Real-Time-Image-Captioning-to-Assist-the-Visually-Impaired" target="_blank" rel="noopener" aria-label="GitHub repository" style="color:var(--muted);display:flex;transition:color 0.18s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </a>
             </div>
             <span class="exp-dates">Feb 2024 – May 2025</span>
           </div>
           <p class="exp-role">Research Assistant · Pune, India</p>
-          <p class="exp-summary">Worked on an assistive vision-language system aimed at helping visually impaired users understand their surroundings through real-time image descriptions and audio feedback.</p>
+          <p class="exp-summary" style="font-size:14px;color:var(--muted);margin-bottom:12px;line-height:1.65;">Worked on an assistive vision-language system aimed at helping visually impaired users understand their surroundings through real-time image descriptions and audio feedback.</p>
           <ul class="exp-bullets">
             <li>Developed a CLIP–GPT-2 based image captioning pipeline, integrating visual features with language generation and EasyOCR-based scene-text extraction to capture both visual context and textual information.</li>
             <li>Fine-tuned the ClipCap architecture for the accessibility domain on 20K+ VizWiz image-caption pairs, specializing the model for descriptions of scenes encountered by visually impaired users.</li>
@@ -855,9 +842,9 @@
           </div>
         </div>
         <p class="project-name">FactGraph</p>
-        <p class="project-desc">LLMs annotating factual claims have no evidence trail — when they're wrong, nothing flags it. Built a knowledge-graph-grounded verification pipeline to catch these errors at scale on the FEVER benchmark.</p>
+        <p class="project-desc">LLMs annotating factual claims have no evidence trail; when they're wrong, nothing flags it. Built a knowledge-graph-grounded verification pipeline to catch these errors at scale on the FEVER benchmark.</p>
         <ul class="project-metrics">
-          <li>Rescued 62% of LLM annotation errors (133 of 213) by cross-checking claims against Wikidata graph evidence — no retraining, only evidence routing</li>
+          <li>Rescued 62% of LLM annotation errors (133 of 213) by cross-checking claims against Wikidata graph evidence; no retraining, only evidence routing</li>
           <li>Boosted NEI recall 4.9× (0.17 → 0.83) by grounding ambiguous claims in structured evidence instead of LLM parametric knowledge</li>
           <li>Three-route retrieval system: exact match → property lookup → MiniLM semantic fallback over a 3,990-triple knowledge graph</li>
         </ul>
@@ -871,6 +858,29 @@
         </div>
       </article>
 
+      <!-- CNN–RNN Image Captioning -->
+      <article class="project-card">
+        <div class="project-card-top">
+          <span class="project-icon" aria-hidden="true">🖼️</span>
+          <div class="project-links"></div>
+        </div>
+        <p class="project-name">Image Captioning with CNN–RNN</p>
+        <p class="project-desc">Built a CNN–RNN image captioning system using VGG16 for visual feature extraction and an LSTM decoder for sequence generation, trained on 8K Flickr images with 40K+ captions.</p>
+        <ul class="project-metrics">
+          <li>Implemented a custom image-caption preprocessing and tokenization pipeline to standardize the Flickr8k corpus for sequence-to-sequence training</li>
+          <li>Improved caption quality by 12% BLEU using beam search decoding over greedy decoding; same model, better inference</li>
+          <li>Established an architecture baseline that directly informed the later move to CLIP–GPT-2 for the accessibility domain</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">VGG16</span>
+          <span class="tag">LSTM</span>
+          <span class="tag">TensorFlow</span>
+          <span class="tag">Keras</span>
+          <span class="tag">Beam Search</span>
+          <span class="tag">Flickr8k</span>
+        </div>
+      </article>
+
       <!-- Slide Deck KB -->
       <article class="project-card">
         <div class="project-card-top">
@@ -878,7 +888,7 @@
           <div class="project-links"></div>
         </div>
         <p class="project-name">Slide Deck Knowledge Base <span class="project-badge-wip">In Progress</span></p>
-        <p class="project-desc">Text-only RAG fails on slide decks — charts, diagrams, and layout carry meaning that embeddings alone miss. Building a hybrid retrieval system with dual visual + semantic representations to answer questions over presentation corpora.</p>
+        <p class="project-desc">Text-only RAG fails on slide decks; charts, diagrams, and layout carry meaning that embeddings alone miss. Building a hybrid retrieval system with dual visual + semantic representations to answer questions over presentation corpora.</p>
         <ul class="project-metrics">
           <li>Dual representation per slide: CLIP visual embedding + VLM-generated semantic description</li>
           <li>Hybrid retrieval fusion combining visual similarity and semantic similarity, with Cohere reranking</li>
@@ -962,7 +972,7 @@
         <div class="skill-items">
           <span class="skill-item">Neo4j</span>
           <span class="skill-item">PostgreSQL</span>
-          <span class="skill-item">Wikidata</span>
+          <span class="skill-item">MySQL</span>
         </div>
       </div>
       <div class="skill-group">
@@ -971,7 +981,6 @@
           <span class="skill-item">Flask</span>
           <span class="skill-item">Docker</span>
           <span class="skill-item">HuggingFace Hub</span>
-          <span class="skill-item">Gradio</span>
         </div>
       </div>
       <div class="skill-group">
@@ -979,6 +988,7 @@
         <div class="skill-items">
           <span class="skill-item">LLM Evaluation</span>
           <span class="skill-item">Multimodal AI</span>
+          <span class="skill-item">Vision-Language Models</span>
           <span class="skill-item">Knowledge Graphs</span>
         </div>
       </div>

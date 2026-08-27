@@ -3,27 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vidisha Deshpande</title>
+  <title>Vidisha Deshpande — AI Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
-
-  <!-- Umami analytics -->
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="5519fcee-ed61-4893-bc58-bad9fd18a4c3"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     :root {
-      --bg:       #f9f9f8;
-      --surface:  #ffffff;
-      --border:   #e4e4e1;
-      --text:     #1a1a18;
-      --muted:    #6b6b67;
-      --accent:   #2563eb;
-      --tag-bg:   #f0f0ee;
-      --tag-text: #44443f;
-      --radius:   10px;
+      --bg:         #f7f7f2;
+      --surface:    #ffffff;
+      --surface-2:  #eef0e8;
+      --border:     #dfe2d8;
+      --text:       #1d211b;
+      --muted:      #62685c;
+      --accent:     #66754a;
+      --accent-b:   #7d8d5d;
+      --accent-dim: rgba(102,117,74,0.12);
+      --radius:     12px;
+      --nav-h:      64px;
     }
 
     body {
@@ -31,428 +31,1049 @@
       background: var(--bg);
       color: var(--text);
       font-size: 15px;
-      line-height: 1.65;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
     }
 
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* ── layout ── */
-    .page {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 72px 24px 96px;
-    }
-
-    /* ── hero ── */
-    .hero { margin-bottom: 56px; }
-
-    .hero h1 {
-      font-size: 22px;
-      font-weight: 500;
-      letter-spacing: -0.3px;
-      margin-bottom: 6px;
-    }
-
-    .hero .tagline {
-      color: var(--muted);
-      font-size: 15px;
-      margin-bottom: 20px;
-    }
-
-    .links {
+    /* ── NAVBAR ── */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(247,247,242,0.90);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      z-index: 100;
     }
 
-    .links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
+    .nav-brand {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    .nav-brand .dot { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+    .nav-links a {
+      font-size: 14px;
+      color: var(--muted);
+      transition: color 0.18s;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    .nav-resume {
       font-size: 13px;
       font-weight: 500;
-      color: var(--muted);
-      background: var(--surface);
-      border: 1px solid var(--border);
+      color: var(--accent);
+      border: 1px solid rgba(102,117,74,0.45);
       border-radius: 6px;
-      padding: 5px 11px;
-      transition: border-color 0.15s, color 0.15s;
+      padding: 7px 16px;
+      transition: background 0.18s, color 0.18s;
+    }
+    .nav-resume:hover { background: var(--accent); color: #ffffff; text-decoration: none; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-h);
     }
 
-    .links a:hover {
+    .hero-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 64px;
+      width: 100%;
+    }
+
+    .hero-left { flex: 1; min-width: 0; }
+
+    .greeting {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    .hero-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(34px, 5vw, 58px);
+      font-weight: 700;
+      line-height: 1.08;
       color: var(--text);
-      border-color: #c0c0bc;
-      text-decoration: none;
+      letter-spacing: -1px;
+      margin-bottom: 14px;
     }
 
-    .links a svg {
-      width: 14px;
-      height: 14px;
+    .hero-tagline {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(18px, 2.8vw, 28px);
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 24px;
+      min-height: 1.5em;
+    }
+
+    .hero-tagline .typed-accent { color: var(--accent); }
+
+    .cursor {
+      display: inline-block;
+      color: var(--accent);
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    .hero-bio {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 460px;
+      margin-bottom: 32px;
+      line-height: 1.75;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 8px;
+      padding: 11px 22px;
+      transition: all 0.18s;
+      cursor: pointer;
+      text-decoration: none;
+      line-height: 1;
+    }
+    .btn-primary { background: var(--accent); color: #ffffff; }
+    .btn-primary:hover { background: var(--accent-b); text-decoration: none; }
+    .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--muted); text-decoration: none; }
+
+    .hero-socials { display: flex; gap: 16px; }
+    .hero-socials a { color: var(--muted); transition: color 0.18s; display: flex; }
+    .hero-socials a:hover { color: var(--text); text-decoration: none; }
+    .hero-socials svg { width: 20px; height: 20px; }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
       flex-shrink: 0;
     }
 
-    /* ── section label ── */
-    .section-label {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    /* ── project cards ── */
-    .projects { margin-bottom: 56px; }
-
-    .card {
+    .photo-frame {
+      width: 230px;
+      height: 230px;
+      border-radius: 18px;
+      border: 2px solid rgba(102,117,74,0.45);
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px 28px;
-      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(102,117,74,0.10), transparent 60%);
+    }
+    .photo-initials {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 52px;
+      font-weight: 700;
+      color: var(--accent);
+      z-index: 1;
+      letter-spacing: -2px;
     }
 
-    .card-header {
+    /* if the user replaces VD with an actual <img> */
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    .stats-row {
       display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
+      gap: 28px;
+      justify-content: center;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-lbl {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* ── SECTION SHELL ── */
+    .section {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 96px 48px;
+    }
+
+    .section-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--accent);
+      display: block;
       margin-bottom: 10px;
     }
 
-    .card-title {
-      font-size: 15px;
-      font-weight: 500;
-    }
-
-    .card-links {
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.5px;
+      margin-bottom: 48px;
       display: flex;
-      gap: 10px;
-      flex-shrink: 0;
-      margin-top: 2px;
+      align-items: center;
+      gap: 20px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      max-width: 280px;
     }
 
-    .card-links a {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--accent);
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 290px;
+      gap: 48px;
+      align-items: start;
     }
 
-    .card-links a:hover { text-decoration: underline; }
-
-    .card-desc {
-      font-size: 14px;
+    .about-text p {
       color: var(--muted);
-      margin-bottom: 14px;
-      line-height: 1.6;
+      margin-bottom: 18px;
+      font-size: 15px;
+      line-height: 1.8;
     }
+    .about-text p strong { color: var(--text); font-weight: 500; }
+    .about-text p:last-child { margin-bottom: 0; }
 
-    .card ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    .highlights-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .highlights-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text);
       margin-bottom: 16px;
     }
-
-    .card ul li {
-      font-size: 14px;
-      line-height: 1.55;
-      padding-left: 14px;
-      position: relative;
-      color: var(--text);
-    }
-
-    .card ul li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: var(--border);
-      font-size: 13px;
-    }
-
-    .tags {
+    .hi-item {
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.5;
+    }
+    .hi-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .hi-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── EXPERIENCE ── */
+    .exp-timeline { position: relative; padding-left: 32px; }
+    .exp-timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 10px;
+      bottom: 10px;
+      width: 1px;
+      background: var(--border);
     }
 
-    .tag {
-      font-size: 12px;
-      font-family: 'JetBrains Mono', monospace;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border-radius: 4px;
-      padding: 3px 8px;
-    }
+    .exp-entry { position: relative; margin-bottom: 28px; }
+    .exp-entry:last-child { margin-bottom: 0; }
 
-    /* ── experience ── */
-    .experience { margin-bottom: 56px; }
+    .exp-dot {
+      position: absolute;
+      left: -32px;
+      top: 6px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      background: var(--bg);
+      z-index: 1;
+    }
+    .exp-dot.active { background: var(--accent); }
 
     .exp-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 24px 28px;
+      transition: border-color 0.18s;
     }
+    .exp-card:hover { border-color: rgba(102,117,74,0.28); }
 
-    .exp-header {
+    .exp-card-top {
       display: flex;
-      align-items: baseline;
       justify-content: space-between;
-      gap: 12px;
+      align-items: flex-start;
       margin-bottom: 4px;
+      gap: 12px;
     }
 
-    .exp-title {
-      font-size: 15px;
-      font-weight: 500;
+    .exp-company-row { display: flex; align-items: center; gap: 10px; }
+    .exp-company {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .exp-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+    .badge-current {
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid rgba(102,117,74,0.28);
     }
 
     .exp-dates {
-      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
       color: var(--muted);
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
-    .exp-company {
+    .exp-role {
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .exp-bullets li {
+      font-size: 14px;
+      color: var(--muted);
+      padding: 5px 0 5px 18px;
+      position: relative;
+      line-height: 1.65;
+    }
+    .exp-bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 11px;
+      top: 8px;
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 16px;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .project-card:hover {
+      border-color: rgba(102,117,74,0.32);
+      transform: translateY(-3px);
+    }
+
+    .project-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .project-icon { font-size: 30px; line-height: 1; }
+
+    .project-links { display: flex; gap: 10px; }
+    .project-links a { color: var(--muted); transition: color 0.18s; display: flex; }
+    .project-links a:hover { color: var(--text); text-decoration: none; }
+    .project-links svg { width: 18px; height: 18px; }
+
+    .project-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .project-badge-wip {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      padding: 2px 7px;
+      margin-left: 6px;
+      vertical-align: middle;
+      background: rgba(251,191,36,0.12);
+      color: #fbbf24;
+      border: 1px solid rgba(251,191,36,0.3);
+    }
+
+    .project-desc {
       font-size: 13px;
       color: var(--muted);
+      line-height: 1.65;
       margin-bottom: 14px;
     }
 
-    .exp-card ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .exp-card ul li {
-      font-size: 14px;
-      line-height: 1.55;
+    .project-metrics { list-style: none; margin-bottom: 16px; display: flex; flex-direction: column; gap: 5px; }
+    .project-metrics li {
+      font-size: 12.5px;
+      color: var(--muted);
       padding-left: 14px;
       position: relative;
+      line-height: 1.55;
     }
-
-    .exp-card ul li::before {
+    .project-metrics li::before {
       content: '—';
       position: absolute;
       left: 0;
       color: var(--border);
-      font-size: 13px;
+      font-size: 12px;
     }
 
-    /* ── publications ── */
-    .publications { margin-bottom: 56px; }
-
-    .pub-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    /* ── TAGS (shared) ── */
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      background: var(--surface-2);
+      color: var(--muted);
+      border-radius: 4px;
+      padding: 3px 8px;
     }
 
+    /* ── PUBLICATIONS ── */
+    .pub-list { display: flex; flex-direction: column; gap: 14px; }
     .pub-item {
       display: flex;
-      align-items: baseline;
-      gap: 10px;
-      font-size: 14px;
+      align-items: flex-start;
+      gap: 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      transition: border-color 0.18s;
     }
-
-    .pub-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--border);
+    .pub-item:hover { border-color: rgba(102,117,74,0.28); }
+    .pub-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--accent);
       flex-shrink: 0;
-      margin-top: 8px;
+      margin-top: 2px;
+      min-width: 24px;
     }
-
-    .pub-item a {
-      color: var(--text);
+    .pub-body { flex: 1; }
+    .pub-title {
+      font-size: 14px;
       font-weight: 500;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.5;
     }
+    .pub-title a { color: var(--text); }
+    .pub-title a:hover { color: var(--accent); text-decoration: none; }
+    .pub-venue { font-size: 12px; color: var(--muted); }
 
-    .pub-item a:hover { color: var(--accent); text-decoration: none; }
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      gap: 14px;
+    }
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+    }
+    .skill-group-title {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .skill-items { display: flex; flex-direction: column; gap: 6px; }
+    .skill-item { font-size: 13px; color: var(--muted); }
 
-    .pub-venue {
-      color: var(--muted);
+    /* ── CONTACT ── */
+    .contact-wrap {
+      text-align: center;
+      padding: 96px 48px;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .contact-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
       font-size: 13px;
-      margin-left: 4px;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 18px;
     }
-
-    /* ── skills ── */
-    .skills { margin-bottom: 0; }
-
-    .skill-strip {
+    .contact-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(32px, 5vw, 44px);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .contact-sub {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 36px;
+      line-height: 1.75;
+    }
+    .contact-links {
       display: flex;
+      justify-content: center;
+      gap: 14px;
       flex-wrap: wrap;
-      gap: 6px;
     }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 8px;
+      padding: 12px 24px;
+      transition: all 0.18s;
+      text-decoration: none;
+    }
+    .contact-btn.primary { background: var(--accent); color: #ffffff; }
+    .contact-btn.primary:hover { background: var(--accent-b); text-decoration: none; }
+    .contact-btn.secondary { color: var(--text); border: 1px solid var(--border); }
+    .contact-btn.secondary:hover { border-color: var(--muted); text-decoration: none; }
+    .contact-btn svg { width: 16px; height: 16px; }
 
-    /* ── footer ── */
-    .footer {
-      margin-top: 72px;
-      padding-top: 24px;
+    /* ── FOOTER ── */
+    footer {
       border-top: 1px solid var(--border);
-      font-size: 13px;
+      text-align: center;
+      padding: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
       color: var(--muted);
     }
 
-    /* ── responsive ── */
-    @media (max-width: 520px) {
-      .card-header { flex-direction: column; gap: 8px; }
-      .exp-header { flex-direction: column; gap: 2px; }
-      .page { padding: 48px 20px 72px; }
+    /* ── SCROLL FADE ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .navbar { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero-inner { flex-direction: column; padding: 48px 24px; gap: 48px; }
+      .hero-right { width: 100%; align-items: center; }
+      .photo-frame { width: 180px; height: 180px; }
+      .section { padding: 64px 24px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .contact-wrap { padding: 64px 24px; }
+    }
+
+    @media (min-width: 861px) and (max-width: 1100px) {
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
-<div class="page">
 
-  <!-- Hero -->
-  <header class="hero">
-    <h1>Vidisha Deshpande</h1>
-    <p class="tagline">MS Data Science @ Stony Brook &nbsp;·&nbsp; Stony Brook, NY &nbsp;·&nbsp; Open to AI/ML internships and full-time roles (2027)</p>
-    <nav class="links" aria-label="Contact links">
-      <a href="https://github.com/vidi-deshp12" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        GitHub
-      </a>
-      <a href="https://www.linkedin.com/in/vidishadeshpande" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        LinkedIn
-      </a>
-      <a href="mailto:vidisha.deshpande@stonybrook.edu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Email
-      </a>
-      <a href="/resume.pdf" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        Resume
-      </a>
-    </nav>
-  </header>
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar" role="navigation">
+    <a href="#" class="nav-brand">VD<span class="dot">.</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="resume.pdf" class="nav-resume" target="_blank" rel="noopener">Resume</a>
+  </nav>
 
-  <!-- Projects -->
-  <section class="projects" aria-labelledby="projects-label">
-    <p class="section-label" id="projects-label">Projects</p>
-
-    <!-- FactGraph -->
-    <article class="card">
-      <div class="card-header">
-        <span class="card-title">FactGraph</span>
-        <div class="card-links">
-          <a href="https://github.com/vidi-deshp12/FactGraph-Verifier" target="_blank" rel="noopener">GitHub ↗</a>
+  <!-- ══ HERO ══ -->
+  <section class="hero" id="hero" aria-label="Introduction">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <span class="greeting">Hi, my name is</span>
+        <h1 class="hero-name">Vidisha Deshpande</h1>
+        <p class="hero-tagline">I build <span class="typed-accent" id="typed-text"></span><span class="cursor">|</span></p>
+        <p class="hero-bio">
+          MS Data Science student at Stony Brook building AI systems where reliability is the requirement — not the afterthought.
+          I'm actively looking for AI engineer roles in retrieval, verification, and multimodal reasoning.
+        </p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="resume.pdf" class="btn btn-secondary" target="_blank" rel="noopener">Download Resume</a>
+        </div>
+        <div class="hero-socials" aria-label="Social links">
+          <a href="https://github.com/vidi-deshp12" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/vidishadeshpande" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="mailto:vidisha.deshpande@stonybrook.edu" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
         </div>
       </div>
-      <p class="card-desc">
-        LLMs annotating factual claims have no evidence trail — when they're wrong, nothing flags it.
-        Built a knowledge-graph-grounded verification pipeline to catch these errors on the FEVER benchmark.
-      </p>
-      <ul>
-        <li>Rescued 62% of baseline LLM annotation errors (133 of 213 wrong labels corrected) by cross-checking each claim against Wikidata-derived graph evidence rather than parametric LLM knowledge.</li>
-        <li>Boosted NEI recall 4.9× (0.17 → 0.83) by grounding ambiguous claims in structured evidence instead of defaulting to a confident guess — demonstrating KG retrieval as a targeted correction layer, not a replacement classifier.</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">LLaMA 3.1</span>
-        <span class="tag">spaCy</span>
-        <span class="tag">Neo4j</span>
-        <span class="tag">DeBERTa</span>
-        <span class="tag">Qwen2.5</span>
-        <span class="tag">Wikidata</span>
-        <span class="tag">Python</span>
-      </div>
-    </article>
 
-    <!-- Image Captioning -->
-    <article class="card">
-      <div class="card-header">
-        <span class="card-title">Real-Time Image Captioning for the Visually Impaired</span>
-        <div class="card-links">
-          <a href="https://github.com/vidi-deshp12/Real-Time-Image-Captioning-to-Assist-the-Visually-Impaired" target="_blank" rel="noopener">GitHub ↗</a>
-          <a href="https://link.springer.com/chapter/10.1007/978-981-97-9282-5_46" target="_blank" rel="noopener">Paper ↗</a>
+      <div class="hero-right">
+        <div class="photo-frame" aria-hidden="true">
+          <!-- Replace inner div with <img src="photo.jpg" alt="Vidisha Deshpande"> when ready -->
+          <div class="photo-initials">VD</div>
+        </div>
+        <div class="stats-row">
+          <div class="stat">
+            <span class="stat-num">3.78</span>
+            <span class="stat-lbl">GPA @<br>Stony Brook</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">2×</span>
+            <span class="stat-lbl">Peer-<br>Reviewed</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">3</span>
+            <span class="stat-lbl">AI Systems<br>Built</span>
+          </div>
         </div>
       </div>
-      <p class="card-desc">
-        Visually impaired users need immediate, accurate descriptions of their surroundings.
-        Built a real-time assistive captioning system, deployed end-to-end on mobile, published at SmartCom 2025.
-      </p>
-      <ul>
-        <li>Cut end-to-end inference latency by 44% (9s → 3.2s) by parallelizing CLIP encoding and EasyOCR text extraction — enabling real-time audio feedback on mobile, validated under low-light, motion blur, and occlusion.</li>
-        <li>Fine-tuned a ClipCap-style model on 20K+ VizWiz accessibility images and deployed it to HuggingFace Hub with a full-stack prototype: React Native frontend + Flask inference backend.</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">PyTorch</span>
-        <span class="tag">CLIP</span>
-        <span class="tag">GPT-2</span>
-        <span class="tag">EasyOCR</span>
-        <span class="tag">Flask</span>
-        <span class="tag">React Native</span>
-        <span class="tag">HuggingFace</span>
-      </div>
-    </article>
-  </section>
-
-  <!-- Experience -->
-  <section class="experience" aria-labelledby="exp-label">
-    <p class="section-label" id="exp-label">Experience</p>
-    <div class="exp-card">
-      <div class="exp-header">
-        <span class="exp-title">Data Science Intern — BMC Helix</span>
-        <span class="exp-dates">Jun 2026 – Aug 2026</span>
-      </div>
-      <p class="exp-company">Remote · New York</p>
-      <ul>
-        <li>Built a conversational ITSM agent on BMC Helix Agent Studio that translates unstructured natural-language input into structured tickets, replacing form-based intake with LLM-driven field inference and deterministic priority assignment.</li>
-        <li>Evaluated a production conversational AI agent in an enterprise IT portal through structured adversarial testing, identifying and documenting failure modes in intent routing and multi-turn conversation state handling.</li>
-      </ul>
     </div>
   </section>
 
-  <!-- Publications -->
-  <section class="publications" aria-labelledby="pub-label">
-    <p class="section-label" id="pub-label">Publications</p>
+  <!-- ══ 01 ABOUT ══ -->
+  <section class="section fade-up" id="about" aria-labelledby="about-heading">
+    <span class="section-eyebrow">01.</span>
+    <h2 class="section-title" id="about-heading">About Me</h2>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a Data Science MS student at Stony Brook building AI systems where
+          <strong>reliability is the requirement, not the afterthought.</strong>
+          My work sits at the intersection of retrieval, verification, and multimodal reasoning —
+          grounding LLM outputs in structured evidence, attributing claims to sources,
+          and diagnosing systematically where pipelines fail.
+        </p>
+        <p>
+          I've shipped a <strong>real-time accessibility captioning system to mobile</strong> with a peer-reviewed
+          publication at SmartCom 2025. I built <strong>FactGraph</strong>, a knowledge-graph-grounded
+          fact-checker that rescued 62% of LLM annotation errors on the FEVER benchmark.
+          At BMC Helix, I <strong>evaluated a production conversational AI agent</strong> through
+          structured adversarial testing, documenting failure modes in intent routing and
+          multi-turn state handling.
+        </p>
+        <p>
+          I'm actively looking for <strong>AI engineer roles</strong> where retrieval quality,
+          output attribution, and failure mode analysis are the core product — at companies
+          like Scale AI, Cohere, Adobe, and Pinterest.
+        </p>
+      </div>
+
+      <div>
+        <div class="highlights-card">
+          <p class="highlights-heading">Highlights</p>
+          <div class="hi-item"><span class="hi-icon">🎓</span><span>MS Data Science @ Stony Brook · GPA 3.78</span></div>
+          <div class="hi-item"><span class="hi-icon">🏢</span><span>Data Science Intern @ BMC Helix</span></div>
+          <div class="hi-item"><span class="hi-icon">📄</span><span>2× Peer-Reviewed Publications</span></div>
+          <div class="hi-item"><span class="hi-icon">🔬</span><span>Focus: Retrieval · Verification · Multimodal AI</span></div>
+          <div class="hi-item"><span class="hi-icon">📍</span><span>Stony Brook, NY · Open to relocate</span></div>
+          <div class="hi-item"><span class="hi-icon">🔍</span><span>Seeking AI / ML Engineering Roles (2027)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 02 EXPERIENCE ══ -->
+  <section class="section fade-up" id="experience" aria-labelledby="exp-heading">
+    <span class="section-eyebrow">02.</span>
+    <h2 class="section-title" id="exp-heading">Experience</h2>
+
+    <div class="exp-timeline">
+      <div class="exp-entry">
+        <div class="exp-dot active" aria-hidden="true"></div>
+        <div class="exp-card">
+          <div class="exp-card-top">
+            <div class="exp-company-row">
+              <span class="exp-company">BMC Helix</span>
+            </div>
+            <span class="exp-dates">Jun 2026 – Aug 2026</span>
+          </div>
+          <p class="exp-role">Data Science Intern · Remote, New York</p>
+          <ul class="exp-bullets">
+            <li>Built a conversational ITSM agent on BMC Helix Agent Studio that translates unstructured natural-language input into structured tickets — replacing form-based intake with LLM-driven field inference and deterministic priority assignment.</li>
+            <li>Evaluated a production conversational AI agent through structured adversarial testing, identifying and documenting failure modes in intent routing and multi-turn conversation state handling.</li>
+            <li>Prototyped natural-language ticket search using LLM-generated keyword expansion with lightweight text matching to surface relevant historical resolutions.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="tag">LLMs</span>
+            <span class="tag">Conversational AI</span>
+            <span class="tag">Adversarial Testing</span>
+            <span class="tag">ITSM</span>
+            <span class="tag">Agent Evaluation</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-entry">
+        <div class="exp-dot" aria-hidden="true"></div>
+        <div class="exp-card">
+          <div class="exp-card-top">
+            <div class="exp-company-row">
+              <span class="exp-company">Pune Institute of Computer Technology (PICT)</span>
+            </div>
+            <span class="exp-dates">Feb 2024 – May 2025</span>
+          </div>
+          <p class="exp-role">Research Assistant · Pune, India</p>
+          <p class="exp-summary">Worked on an assistive vision-language system aimed at helping visually impaired users understand their surroundings through real-time image descriptions and audio feedback.</p>
+          <ul class="exp-bullets">
+            <li>Developed a CLIP–GPT-2 based image captioning pipeline, integrating visual features with language generation and EasyOCR-based scene-text extraction to capture both visual context and textual information.</li>
+            <li>Fine-tuned the ClipCap architecture for the accessibility domain on 20K+ VizWiz image-caption pairs, specializing the model for descriptions of scenes encountered by visually impaired users.</li>
+            <li>Optimized the inference pipeline by parallelizing image encoding and scene-text extraction, reducing end-to-end latency from 9s to 3.2s (44%) for more responsive real-time use.</li>
+            <li>Built and deployed a fully functional end-to-end prototype with a Flask backend and React Native mobile interface, and contributed to a peer-reviewed publication at SmartCom 2025, published in Springer LNNS.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="tag">CLIP</span>
+            <span class="tag">GPT-2</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">Flask</span>
+            <span class="tag">React Native</span>
+            <span class="tag">HuggingFace</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 03 PROJECTS ══ -->
+  <section class="section fade-up" id="projects" aria-labelledby="proj-heading">
+    <span class="section-eyebrow">03.</span>
+    <h2 class="section-title" id="proj-heading">Featured Projects</h2>
+
+    <div class="projects-grid">
+
+      <!-- FactGraph -->
+      <article class="project-card">
+        <div class="project-card-top">
+          <span class="project-icon" aria-hidden="true">🧠</span>
+          <div class="project-links">
+            <a href="https://github.com/vidi-deshp12/FactGraph-Verifier" target="_blank" rel="noopener" aria-label="GitHub repository">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            </a>
+          </div>
+        </div>
+        <p class="project-name">FactGraph</p>
+        <p class="project-desc">LLMs annotating factual claims have no evidence trail — when they're wrong, nothing flags it. Built a knowledge-graph-grounded verification pipeline to catch these errors at scale on the FEVER benchmark.</p>
+        <ul class="project-metrics">
+          <li>Rescued 62% of LLM annotation errors (133 of 213) by cross-checking claims against Wikidata graph evidence — no retraining, only evidence routing</li>
+          <li>Boosted NEI recall 4.9× (0.17 → 0.83) by grounding ambiguous claims in structured evidence instead of LLM parametric knowledge</li>
+          <li>Three-route retrieval system: exact match → property lookup → MiniLM semantic fallback over a 3,990-triple knowledge graph</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">LLaMA 3.1</span>
+          <span class="tag">spaCy</span>
+          <span class="tag">Neo4j</span>
+          <span class="tag">DeBERTa</span>
+          <span class="tag">Wikidata</span>
+          <span class="tag">Python</span>
+        </div>
+      </article>
+
+      <!-- Slide Deck KB -->
+      <article class="project-card">
+        <div class="project-card-top">
+          <span class="project-icon" aria-hidden="true">📊</span>
+          <div class="project-links"></div>
+        </div>
+        <p class="project-name">Slide Deck Knowledge Base <span class="project-badge-wip">In Progress</span></p>
+        <p class="project-desc">Text-only RAG fails on slide decks — charts, diagrams, and layout carry meaning that embeddings alone miss. Building a hybrid retrieval system with dual visual + semantic representations to answer questions over presentation corpora.</p>
+        <ul class="project-metrics">
+          <li>Dual representation per slide: CLIP visual embedding + VLM-generated semantic description</li>
+          <li>Hybrid retrieval fusion combining visual similarity and semantic similarity, with Cohere reranking</li>
+          <li>Ablation eval: text-only vs visual-only vs hybrid Recall@1/3/5 on synthetic QA benchmark from public slide decks</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">CLIP</span>
+          <span class="tag">Cohere Rerank</span>
+          <span class="tag">RAG</span>
+          <span class="tag">VLMs</span>
+          <span class="tag">Gradio</span>
+          <span class="tag">Python</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ══ 04 PUBLICATIONS ══ -->
+  <section class="section fade-up" id="publications" aria-labelledby="pub-heading">
+    <span class="section-eyebrow">04.</span>
+    <h2 class="section-title" id="pub-heading">Publications</h2>
+
     <div class="pub-list">
       <div class="pub-item">
-        <div class="pub-dot" aria-hidden="true"></div>
-        <div>
-          <a href="https://link.springer.com/chapter/10.1007/978-981-96-7505-0_28" target="_blank" rel="noopener">Empowering Vision: A Survey on Assistive Technologies for the Visually Impaired</a>
-          <span class="pub-venue">SmartCom 2025 · Springer LNNS · peer-reviewed</span>
+        <span class="pub-num">01</span>
+        <div class="pub-body">
+          <p class="pub-title">
+            <a href="https://link.springer.com/chapter/10.1007/978-981-96-7505-0_28" target="_blank" rel="noopener">
+              Empowering Vision: A Survey on Assistive Technologies for the Visually Impaired
+            </a>
+          </p>
+          <p class="pub-venue">SmartCom 2025 · Springer LNNS · peer-reviewed</p>
         </div>
       </div>
       <div class="pub-item">
-        <div class="pub-dot" aria-hidden="true"></div>
-        <div>
-          <a href="#" target="_blank" rel="noopener">Few-Shot Learning in Vision-Language Models: A Survey</a>
-          <span class="pub-venue">CVR 2025 · peer-reviewed</span>
+        <span class="pub-num">02</span>
+        <div class="pub-body">
+          <p class="pub-title">Few-Shot Learning in Vision-Language Models: A Survey</p>
+          <p class="pub-venue">CVR 2025 · peer-reviewed</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills -->
-  <section class="skills" aria-labelledby="skills-label">
-    <p class="section-label" id="skills-label">Skills</p>
-    <div class="skill-strip">
-      <span class="tag">Python</span>
-      <span class="tag">PyTorch</span>
-      <span class="tag">HuggingFace</span>
-      <span class="tag">spaCy</span>
-      <span class="tag">Neo4j</span>
-      <span class="tag">LLM Evaluation</span>
-      <span class="tag">Flask</span>
-      <span class="tag">Docker</span>
-      <span class="tag">SQL</span>
+  <!-- ══ 05 SKILLS ══ -->
+  <section class="section fade-up" id="skills" aria-labelledby="skills-heading">
+    <span class="section-eyebrow">05.</span>
+    <h2 class="section-title" id="skills-heading">Skills</h2>
+
+    <div class="skills-grid">
+      <div class="skill-group">
+        <p class="skill-group-title">Languages</p>
+        <div class="skill-items">
+          <span class="skill-item">Python</span>
+          <span class="skill-item">C++</span>
+          <span class="skill-item">SQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">ML / AI</p>
+        <div class="skill-items">
+          <span class="skill-item">PyTorch</span>
+          <span class="skill-item">HuggingFace Transformers</span>
+          <span class="skill-item">TensorFlow</span>
+          <span class="skill-item">Keras</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">NLP & Retrieval</p>
+        <div class="skill-items">
+          <span class="skill-item">spaCy</span>
+          <span class="skill-item">FAISS</span>
+          <span class="skill-item">Vector DBs</span>
+          <span class="skill-item">RAG Systems</span>
+          <span class="skill-item">PEFT (Prefix Tuning)</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Graph & Data</p>
+        <div class="skill-items">
+          <span class="skill-item">Neo4j</span>
+          <span class="skill-item">PostgreSQL</span>
+          <span class="skill-item">Wikidata</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Deployment</p>
+        <div class="skill-items">
+          <span class="skill-item">Flask</span>
+          <span class="skill-item">Docker</span>
+          <span class="skill-item">HuggingFace Hub</span>
+          <span class="skill-item">Gradio</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Specializations</p>
+        <div class="skill-items">
+          <span class="skill-item">LLM Evaluation</span>
+          <span class="skill-item">Multimodal AI</span>
+          <span class="skill-item">Knowledge Graphs</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <footer class="footer">
-    vidisha.deshpande@stonybrook.edu
+  <!-- ══ 06 CONTACT ══ -->
+  <div class="contact-wrap fade-up" id="contact">
+    <span class="contact-eyebrow">06. What's Next?</span>
+    <h2 class="contact-heading">Get In Touch</h2>
+    <p class="contact-sub">
+      I'm actively looking for AI/ML engineering roles where retrieval quality, output attribution,
+      and failure mode analysis are the core product. If that sounds like your team, I'd love to talk.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:vidisha.deshpande@stonybrook.edu" class="contact-btn primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Say Hello
+      </a>
+      <a href="https://www.linkedin.com/in/vidishadeshpande" class="contact-btn secondary" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/vidi-deshp12" class="contact-btn secondary" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    Designed &amp; built by Vidisha Deshpande &nbsp;·&nbsp; vidisha.deshpande@stonybrook.edu
   </footer>
 
-</div>
+  <script>
+    // ── Typing animation ──
+    const phrases = [
+      'retrieval systems that find the right evidence.',
+      'verification pipelines that catch what LLMs miss.',
+      'multimodal AI you can actually trust.'
+    ];
+
+    let phraseIdx = 0;
+    let charIdx = 0;
+    let deleting = false;
+    const el = document.getElementById('typed-text');
+
+    function tick() {
+      const cur = phrases[phraseIdx];
+      if (deleting) {
+        el.textContent = cur.slice(0, charIdx - 1);
+        charIdx--;
+      } else {
+        el.textContent = cur.slice(0, charIdx + 1);
+        charIdx++;
+      }
+
+      let delay = deleting ? 38 : 58;
+
+      if (!deleting && charIdx === cur.length) {
+        delay = 2200;
+        deleting = true;
+      } else if (deleting && charIdx === 0) {
+        deleting = false;
+        phraseIdx = (phraseIdx + 1) % phrases.length;
+        delay = 380;
+      }
+      setTimeout(tick, delay);
+    }
+    tick();
+
+    // ── Scroll fade-in ──
+    const io = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.08 }
+    );
+    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+    // ── Active nav link highlight ──
+    const sections = document.querySelectorAll('section[id], div[id="contact"]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const sio = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => {
+            a.style.color = a.getAttribute('href') === '#' + entry.target.id
+              ? 'var(--text)'
+              : '';
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+
+    sections.forEach(s => sio.observe(s));
+  </script>
 </body>
 </html>
